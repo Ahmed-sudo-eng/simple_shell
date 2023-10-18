@@ -17,7 +17,7 @@ int main(void)
 	while (1)
 	{
 		/* Show ($) prompt and take input from user */
-		printf("($) ");
+		/*printf("($) ");*/
 		if ((_getline(&line, &n, stdin)) == -1)
 			return (0);
 		/* Parser */
