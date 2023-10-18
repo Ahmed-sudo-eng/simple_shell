@@ -17,8 +17,8 @@ int main(void)
 	while (1)
 	{
 		/* Show ($) prompt and take input from user */
-		/*printf("($) ");*/
-		if ((_getline(&line, &n, stdin)) == -1)
+		printf("#cisfun$ ");
+		if ((getline(&line, &n, stdin)) == -1)
 			return (0);
 		/* Parser */
 		cmd = strtok(line, " \n");
