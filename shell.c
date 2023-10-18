@@ -7,8 +7,8 @@ int main(void)
 {
 	char *line = NULL;
 	char *cmd =  malloc(16);
-	char *mod_cmd =  malloc(16);
-	char path[16] = {'/', 'b', 'i', 'n', '/'};
+	__attribute__((unused)) char *mod_cmd =  malloc(16);
+	/*char path[16] = {'/', 'b', 'i', 'n', '/'};*/
 	char *av[8];
 	size_t n = 0;
 	int status;
@@ -23,7 +23,7 @@ int main(void)
 		/* Parser */
 		cmd = strtok(line, " \n");
 		mod_cmd = parse_line(av, cmd);
-		strcat(path, mod_cmd);
+		/*strcat(path, mod_cmd);*/
 		/* Create the child process */
 		pid = fork();
 		if (pid == -1)
@@ -32,14 +32,14 @@ int main(void)
 		if (pid == 0)
 		{
 			/* Executer */
-			if ((execve(path, av, environ)) == -1)
+			if ((execve(av[0], av, environ)) == -1)
 				perror(cmd);
 			return (0);
 		}
 		/* Parent process */
 		else
 		{
-			path[5] = '\0';
+			/*path[5] = '\0';*/
 			check_for_builtin_commands(cmd, av, pid, status);
 			if ((wait(&status)) == -1)
 				exit(EXIT_FAILURE);
