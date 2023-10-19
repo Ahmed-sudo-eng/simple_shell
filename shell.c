@@ -26,7 +26,8 @@ int main(void)
 		pid = fork();
 		if (pid == 0)
 		{
-			if ((execve(av[0], av, NULL)) == -1)
+			chdir("/bin");
+			if ((execve(av[0], av, environ)) == -1)
 				perror(av[0]);
 			return (0);
 		}
