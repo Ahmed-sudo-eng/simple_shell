@@ -12,5 +12,5 @@ extern char **environ;
 
 void parse_line(char *av[]);
 void _exit_(char *cmd, pid_t pid, char *line, char *status);
-
+void _cd(char *cmd, pid_t pid, char *newdir);
 #endif
