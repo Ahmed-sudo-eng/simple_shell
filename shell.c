@@ -1,18 +1,20 @@
 #include "main.h"
 /**
  * main - a simple shell program
+ *
  * Return: On Success (0)
  */
 int main(void)
 {
 	char *line = NULL;
 	char *cmd =  malloc(16);
-	__attribute__((unused)) char *mod_cmd =  malloc(16);
+	/*char *mod_cmd =  malloc(16);*/
 	/*char path[16] = {'/', 'b', 'i', 'n', '/'};*/
 	char *av[8];
 	size_t n = 0;
 	int status;
 	pid_t pid;
+
 	/* Main loop */
 	while (1)
 	{
@@ -28,15 +30,12 @@ int main(void)
 		pid = fork();
 		if (pid == -1)
 			exit(EXIT_FAILURE);
-		/* Child proccess */
 		if (pid == 0)
 		{
-			/* Executer */
 			if ((execve(av[0], av, environ)) == -1)
 				perror(cmd);
 			return (0);
 		}
-		/* Parent process */
 		else
 		{
 			/*path[5] = '\0';*/

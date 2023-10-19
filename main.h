@@ -11,7 +11,7 @@
 
 extern char **environ;
 
-char* parse_line(char *av[], char *cmd);
+char *parse_line(char *av[], char *cmd);
 int _getline(char **lineptr,  size_t *n, FILE *stream);
 void _exit_(char *cmd, pid_t pid, char *status);
 void _env(char *cmd);
