@@ -28,8 +28,10 @@ int main(void)
 		pid = fork();
 		if (pid == 0)
 		{
-			if ((execve(path, av, environ)) == -1)
-				perror(av[0]);
+			if (line[0] == '/')
+				execve(av[0], av, environ);
+			else
+				execve(path, av, environ);
 			return (0);
 		}
 		else
