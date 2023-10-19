@@ -37,7 +37,7 @@ int main(void)
 		else
 		{
 			path[5] = '\0';
-			_exit_(av[0], pid);
+			_exit_(av[0], pid, line);
 			wait(NULL);
 		}
 	}

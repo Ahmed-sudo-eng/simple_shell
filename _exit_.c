@@ -8,12 +8,13 @@
  *
  * Return: Nothing
  */
-void _exit_(char *cmd, pid_t pid)
+void _exit_(char *cmd, pid_t pid, char *line)
 {
 
 	if (strlen(cmd) == 4 && cmd[0] == 'e' && cmd[1] == 'x' &&
 			cmd[2] == 'i' && cmd[3] == 't')
 	{
+		free(line);
 		kill(pid, 9);
 		exit(EXIT_SUCCESS);
 	}
