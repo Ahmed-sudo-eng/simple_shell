@@ -25,7 +25,11 @@ int main(void)
 		/* Show ($) prompt and take input from user */
 		/*printf("#cisfun$ ");*/
 		if ((getline(&line, &n, stdin)) == -1)
+		{
+			free(cmd);
+			free(line);
 			return (0);
+		}
 		/* Parser */
 		cmd = strtok(line, " \n");
 		av[0] = cmd;
