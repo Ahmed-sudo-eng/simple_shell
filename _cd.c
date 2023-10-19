@@ -12,7 +12,11 @@ void _cd(char *cmd, pid_t pid, char *newdir)
 	{
 		kill(pid, 9);
 		if (newdir == NULL)
+		{
 			newdir = getenv("HOME");
+			if (newdir == NULL)
+				return;
+		}
 		if ((chdir(newdir)) == -1)
 			perror(cmd);
 	}
