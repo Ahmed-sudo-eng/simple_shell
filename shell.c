@@ -13,10 +13,8 @@
 int main(void)
 {
 	char *line = NULL;
-	char *cmd =  malloc(16);
-	char *av[8];
+	char *av[2];
 	size_t n = 0;
-	int status;
 	pid_t pid;
 
 	/* Main loop */
@@ -25,29 +23,22 @@ int main(void)
 		/* Show ($) prompt and take input from user */
 		/*printf("#cisfun$ ");*/
 		if ((getline(&line, &n, stdin)) == -1)
-		{
-			free(cmd);
-			free(line);
-			return (0);
-		}
+			break;
 		/* Parser */
-		cmd = strtok(line, " \n");
-		av[0] = cmd;
+		av[0] = strtok(line, " \n");
 		av[1] = NULL;
 		/* Create the child process */
 		pid = fork();
-		if (pid == -1)
-			exit(EXIT_FAILURE);
 		if (pid == 0)
 		{
-			if ((execve(cmd, av, NULL)) == -1)
-				perror(cmd);
+			execve(av[0], av, NULL);
 			return (0);
 		}
 		else
 		{
-			if ((wait(&status)) == -1)
-				exit(EXIT_FAILURE);
+			wait(NULL);
 		}
 	}
+	free(line);
+	return (0);
 }
