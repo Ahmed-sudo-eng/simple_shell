@@ -21,7 +21,7 @@ int main(void)
 	while (1)
 	{
 		/* Show ($) prompt and take input from user */
-		/*printf("#cisfun$ ");*/
+		printf("($) ");
 		if ((getline(&line, &n, stdin)) == -1)
 			break;
 		/* Parser */
