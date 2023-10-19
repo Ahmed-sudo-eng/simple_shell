@@ -1,9 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/wait.h>
+#include "main.h"
 
 /**
  * main - a simple shell program
@@ -13,7 +8,7 @@
 int main(void)
 {
 	char *line = NULL;
-	char *av[2];
+	char *av[16];
 	size_t n = 0;
 	pid_t pid;
 
@@ -26,7 +21,7 @@ int main(void)
 			break;
 		/* Parser */
 		av[0] = strtok(line, " \n");
-		av[1] = NULL;
+		parse_line(av);
 		/* Create the child process */
 		pid = fork();
 		if (pid == 0)
