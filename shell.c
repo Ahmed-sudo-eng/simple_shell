@@ -21,7 +21,7 @@ int main(void)
 	while (1)
 	{
 		/* Show ($) prompt and take input from user */
-		printf("($) ");
+		/*printf("($) ");*/
 		if ((getline(&line, &n, stdin)) == -1)
 			break;
 		/* Parser */
@@ -31,7 +31,8 @@ int main(void)
 		pid = fork();
 		if (pid == 0)
 		{
-			execve(av[0], av, NULL);
+			if ((execve(av[0], av, NULL)) == -1)
+				perror(av[0]);
 			return (0);
 		}
 		else
