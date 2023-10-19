@@ -11,6 +11,8 @@ void _cd(char *cmd, pid_t pid, char *newdir)
 	if (strlen(cmd) == 2 && cmd[0] == 'c' && cmd[1] == 'd')
 	{
 		kill(pid, 9);
+		if (newdir == NULL)
+			newdir = getenv("HOME");
 		if ((chdir(newdir)) == -1)
 			perror(cmd);
 	}
