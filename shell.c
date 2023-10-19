@@ -1,4 +1,10 @@
-#include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+
 /**
  * main - a simple shell program
  *
@@ -8,8 +14,6 @@ int main(void)
 {
 	char *line = NULL;
 	char *cmd =  malloc(16);
-	/*char *mod_cmd =  malloc(16);*/
-	/*char path[16] = {'/', 'b', 'i', 'n', '/'};*/
 	char *av[8];
 	size_t n = 0;
 	int status;
@@ -24,22 +28,20 @@ int main(void)
 			return (0);
 		/* Parser */
 		cmd = strtok(line, " \n");
-		cmd = parse_line(av, cmd);
-		/*strcat(path, mod_cmd);*/
+		av[0] = cmd;
+		av[1] = NULL;
 		/* Create the child process */
 		pid = fork();
 		if (pid == -1)
 			exit(EXIT_FAILURE);
 		if (pid == 0)
 		{
-			if ((execve(av[0], av, environ)) == -1)
+			if ((execve(cmd, av, NULL)) == -1)
 				perror(cmd);
 			return (0);
 		}
 		else
 		{
-			/*path[5] = '\0';*/
-			check_for_builtin_commands(cmd, av, pid, status);
 			if ((wait(&status)) == -1)
 				exit(EXIT_FAILURE);
 		}
