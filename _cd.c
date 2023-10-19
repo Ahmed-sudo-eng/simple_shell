@@ -17,6 +17,12 @@ void _cd(char *cmd, pid_t pid, char *newdir)
 			if (newdir == NULL)
 				return;
 		}
+		else if (*newdir == '-')
+		{
+			newdir = getenv("OLDPWD");
+			if (newdir == NULL)
+				return;
+		}
 		if ((chdir(newdir)) == -1)
 			perror(cmd);
 	}
