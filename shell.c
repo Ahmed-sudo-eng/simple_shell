@@ -24,7 +24,7 @@ int main(void)
 			return (0);
 		/* Parser */
 		cmd = strtok(line, " \n");
-		mod_cmd = parse_line(av, cmd);
+		cmd = parse_line(av, cmd);
 		/*strcat(path, mod_cmd);*/
 		/* Create the child process */
 		pid = fork();
