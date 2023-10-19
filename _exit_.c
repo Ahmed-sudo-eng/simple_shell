@@ -4,7 +4,7 @@
  * _exit_ -  this function is set to handle exit command in the hsh shell
  * @cmd: The command
  * @pid: The child procces identifier
- * @status: The exit status
+ * @line: line
  *
  * Return: Nothing
  */

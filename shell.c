@@ -29,15 +29,22 @@ int main(void)
 		if (pid == 0)
 		{
 			if (line[0] == '/')
-				execve(av[0], av, environ);
+			{
+				if (execve(av[0], av, environ) == -1)
+					perror(av[0]);
+			}
 			else
-				execve(path, av, environ);
+			{
+				if (execve(path, av, environ) == -1)
+					perror(av[0]);
+			}
 			return (0);
 		}
 		else
 		{
 			path[5] = '\0';
 			_exit_(av[0], pid, line);
+			_env(av[0]);
 			wait(NULL);
 		}
 	}
