@@ -44,7 +44,6 @@ int main(void)
 		{
 			path[5] = '\0';
 			_exit_(av[0], pid, line);
-			_env(av[0]);
 			wait(NULL);
 		}
 	}
