@@ -47,6 +47,7 @@ int main(void)
 			_cd(av[0], pid, av[1]);
 			_setenv(av[0], pid, av[1], av[2]);
 			_unsetenv(av[0], pid, av[1]);
+			_echo(av[0], pid, av[1]);
 			wait(NULL);
 		}
 	}
