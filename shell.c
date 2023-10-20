@@ -40,8 +40,7 @@ int main(void)
 					perror(av[0]);
 			}
 			*/
-			if ((execve(av[0], av, environ) == -1))
-					perror(av[0]);
+			execve(av[0], av, environ);
 			return (0);
 		}
 		else
