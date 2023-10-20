@@ -10,7 +10,7 @@ int main(void)
 	char *line = NULL;
 	char *av[16];
 	size_t len = 0;
-	int status, i;
+	int status, i, n;
 	pid_t pid;
 
 	/* Main loop */
