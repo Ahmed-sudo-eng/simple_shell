@@ -23,7 +23,7 @@ void _cd(char *cmd, pid_t pid, char *newdir)
 			if (newdir == NULL)
 				return;
 		}
-		
+
 		if ((chdir(newdir)) == -1)
 			printf("./hsh: 1: cd: can't cd to %s\n", newdir);
 	}

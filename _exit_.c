@@ -5,6 +5,8 @@
  * @cmd: The command
  * @pid: The child procces identifier
  * @line: line
+ * @status: child exit status
+ * @user_status: status exited by the user
  *
  * Return: Nothing
  */

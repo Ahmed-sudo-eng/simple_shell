@@ -1,7 +1,9 @@
 #include "main.h"
 
 /**
- * executer - 
+ * executer - a program used by the shell to execute commands
+ * @cmd: command
+ * @av: commanf with arguments
  *
  * Return: Nothing
  */
