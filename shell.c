@@ -5,23 +5,17 @@
  *
  * Return: On Success (0)
  */
-int main(int argc, char *argv[])
+int main(void)
 {
 	char *line = NULL;
 	char *av[16];
 	size_t len = 0;
 	int status, i, n;
 	pid_t pid;
-	FILE *file = NULL;
 
-	if (argc == 2)
-		file = fopen(argv[1], "r");
 	while (1)
 	{
-		if (file == NULL)
-			n = getline(&line, &len, stdin);
-		else
-			n = getline(&line, &len, file);
+		n = getline(&line, &len, stdin);
 		if (n == -1)
 			break;
 		for (i = 0; line[i] != '\0'; i++)
