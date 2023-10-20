@@ -7,9 +7,11 @@
 #include <signal.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <fcntl.h>
 
 extern char **environ;
 
+void executer(char *cmd, char *av[]);
 void parse_line(char *av[]);
 void _exit_(char *cmd, pid_t pid, char *line, char *status);
 void _cd(char *cmd, pid_t pid, char *newdir);
