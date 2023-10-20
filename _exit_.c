@@ -8,19 +8,22 @@
  *
  * Return: Nothing
  */
-void _exit_(char *cmd, pid_t pid, char *line, char *status)
+void _exit_(char *cmd, pid_t pid, char *line, int status, char *user_status)
 {
 	int s;
 
 	if (strlen(cmd) == 4 && cmd[0] == 'e' && cmd[1] == 'x' &&
 			cmd[2] == 'i' && cmd[3] == 't')
 	{
-		if (status == NULL)
-			s = 0;
-		else
-			s = atoi(status);
+		if (user_status != NULL)
+		{
+			s = atoi(user_status);
+			free(line);
+			kill(pid, 9);
+			exit(s);
+		}
 		free(line);
 		kill(pid, 9);
-		exit(s);
+		exit(status / 256);
 	}
 }
