@@ -6,13 +6,15 @@
  *
  * Return: Nothing
  */
-void _env(char *cmd, pid_t pid, char *av[])
+void _env(char *cmd, pid_t pid, char __attribute__((unused)) *av[])
 {
+	int i;
 
 	if (strlen(cmd) == 3 && cmd[0] == 'e' && cmd[1] == 'n'
 			&& cmd[2] == 'v')
 	{
 		kill(pid, 9);
-		execve("/bin/env", av, environ);
+		for (i = 0; environ[i] != NULL; i++)
+			printf("%s\n", environ[i]);
 	}
 }
