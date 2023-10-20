@@ -45,5 +45,5 @@ int main(void)
 		}
 	}
 	free(line);
-	exit(status / 256);
+	exit(EXIT_SUCCESS);
 }
