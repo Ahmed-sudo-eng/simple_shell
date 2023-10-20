@@ -17,7 +17,7 @@ int main(void)
 	while (1)
 	{
 		/* Show ($) prompt and take input from user */
-		n = _getline(&line, &len, stdin);
+		n = getline(&line, &len, stdin);
 		if (n == -1)
 			break;
 		for (i = 0; line[i] != '\0'; i++)
