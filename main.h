@@ -17,4 +17,6 @@ void _exit_(char *cmd, pid_t pid, char *line, int status, char *user_status);
 void _cd(char *cmd, pid_t pid, char *newdir);
 void _setenv(char *cmd, pid_t pid, char *name, char *value);
 void _unsetenv(char *cmd, pid_t pid, char *name);
+int _getline(char **lineptr, size_t *n, FILE *stream);
+
 #endif
