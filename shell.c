@@ -11,15 +11,20 @@ int main(void)
 	char *av[16];
 	size_t n = 0;
 	int status;
+	int i;
 	pid_t pid;
 
 	/* Main loop */
 	while (1)
 	{
 		/* Show ($) prompt and take input from user */
-		/*printf("($) ");*/
 		if ((getline(&line, &n, stdin)) == -1)
 			break;
+		for (i = 0; line[i] != '\0'; i++)
+		{
+			if (line[i] == '#')
+				line[i] = '\0';
+		}
 		/* Parser */
 		av[0] = strtok(line, " \n");
 		parse_line(av);
