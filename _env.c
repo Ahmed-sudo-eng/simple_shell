@@ -6,7 +6,7 @@
  *
  * Return: Nothing
  */
-void _env(char *cmd, pid_t pid, char __attribute__((unused)) *av[])
+void _env(char *cmd, pid_t pid)
 {
 	int i;
 
