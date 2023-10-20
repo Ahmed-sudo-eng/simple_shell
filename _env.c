@@ -3,6 +3,7 @@
 /**
  * _env - this function handles the env builtin command for the shell (hsh)
  * @cmd: command
+ * @pid: child pid
  *
  * Return: Nothing
  */
