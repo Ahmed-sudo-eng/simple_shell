@@ -28,7 +28,7 @@ int main(void)
 		pid = fork();
 		if (pid == 0)
 		{
-			if (line[0] == '/')
+			if (line[0] == '/' || line[1] == '/')
 			{
 				if (execve(av[0], av, environ) == -1)
 					perror(av[0]);
@@ -43,11 +43,10 @@ int main(void)
 		else
 		{
 			path[5] = '\0';
-			_exit_(av[0], pid, line, av[1]);
+			/*_exit_(av[0], pid, line, av[1]);
 			_cd(av[0], pid, av[1]);
 			_setenv(av[0], pid, av[1], av[2]);
-			_unsetenv(av[0], pid, av[1]);
-			_echo(av[0], pid, av[1]);
+			_unsetenv(av[0], pid, av[1]);*/
 			wait(NULL);
 		}
 	}
