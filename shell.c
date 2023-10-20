@@ -41,9 +41,10 @@ int main(void)
 			_setenv(av[0], pid, av[1], av[2]);
 			_unsetenv(av[0], pid, av[1]);
 			*/
+			_env(av[0], pid, av);
 			wait(&status);
 		}
 	}
 	free(line);
-	exit(EXIT_SUCCESS);
+	exit(status / 256);
 }
