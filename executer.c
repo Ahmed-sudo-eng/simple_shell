@@ -3,7 +3,7 @@
 /**
  * executer - a program used by the shell to execute commands
  * @cmd: command
- * @av: commanf with arguments
+ * @av: command with arguments
  *
  * Return: Nothing
  */

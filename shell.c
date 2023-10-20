@@ -5,19 +5,23 @@
  *
  * Return: On Success (0)
  */
-int main(void)
+int main(int argc, char *argv[])
 {
 	char *line = NULL;
 	char *av[16];
 	size_t len = 0;
 	int status, i, n;
 	pid_t pid;
+	FILE *file = NULL;
 
-	/* Main loop */
+	if (argc == 2)
+		file = fopen(argv[1], "r");
 	while (1)
 	{
-		/* Show ($) prompt and take input from user */
-		n = getline(&line, &len, stdin);
+		if (file == NULL)
+			n = getline(&line, &len, stdin);
+		else
+			n = getline(&line, &len, file);
 		if (n == -1)
 			break;
 		for (i = 0; line[i] != '\0'; i++)
@@ -37,12 +41,10 @@ int main(void)
 		}
 		else
 		{
-			/*
 			_exit_(av[0], pid, line, status, av[1]);
 			_cd(av[0], pid, av[1]);
 			_setenv(av[0], pid, av[1], av[2]);
 			_unsetenv(av[0], pid, av[1]);
-			*/
 			wait(&status);
 		}
 	}
