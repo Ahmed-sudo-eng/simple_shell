@@ -29,7 +29,8 @@ int main(void)
 		av[0] = strtok(line, " \n");
 		parse_line(av);
 		/* Create the child process */
-		pid = fork();
+		if ((access(av[0], F_OK)) == 0)
+			pid = fork();
 		if (pid == 0)
 		{
 			executer(av[0], av);
@@ -37,12 +38,10 @@ int main(void)
 		}
 		else
 		{
-			/*
 			_exit_(av[0], pid, line, status, av[1]);
 			_cd(av[0], pid, av[1]);
 			_setenv(av[0], pid, av[1], av[2]);
 			_unsetenv(av[0], pid, av[1]);
-			*/
 			wait(&status);
 		}
 	}
